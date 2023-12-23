@@ -1,5 +1,9 @@
 rw_dir_file(vendor_init, sysfs_ged)
 
+# Audio
+set_prop(vendor_init, vendor_mtk_audiohal_prop)
+set_prop(vendor_init, vendor_mtk_audio_prop)
+
 # init.qti.kernel.rc sched
 allow vendor_init vendor_proc_kernel_sched:file rw_file_perms;
 
