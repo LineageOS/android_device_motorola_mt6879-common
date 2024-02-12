@@ -22,6 +22,9 @@ on init
     write /proc/sys/kernel/sched_min_granularity_ns 500000
     write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
 
+    # Set teo as cpu idle governor
+    write /sys/devices/system/cpu/cpuidle/current_governor teo
+
 ## Utilization Clamping
     # Tuning
     write /proc/sys/kernel/sched_util_clamp_min_rt_default 0
