@@ -70,6 +70,9 @@ service nxpnfcinfo /system/vendor/bin/nxpnfcinfo
     user system
     oneshot
 
+on property:ro.vendor.hw.esim=""
+    mount none /product/lost+found /product/etc/permissions/android.hardware.telephony.euicc.xml bind
+
 on property:ro.vendor.hw.nfc=nq && property:persist.vendor.nfc.config_file_name=*
     start vendor.nfc_hal_service
 
