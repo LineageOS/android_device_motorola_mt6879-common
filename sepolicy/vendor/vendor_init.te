@@ -1,3 +1,5 @@
+rw_dir_file(vendor_init, sysfs_ged)
+
 # init.qti.kernel.rc sched
 allow vendor_init vendor_proc_kernel_sched:file rw_file_perms;
 
