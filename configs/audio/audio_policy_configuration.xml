@@ -325,9 +325,6 @@
 
         </module>
 
-        <!-- BT Audio HAL -->
-        <xi:include href="bluetooth_offload_audio_policy_configuration.xml"/>
-
         <!-- Usb v2 Audio HAL -->
         <xi:include href="usbv2_audio_policy_configuration.xml"/>
 
