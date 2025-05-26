@@ -214,3 +214,6 @@
 # NXP NFC
 /dev/nq-nci              0666   nfc        nfc
 /dev/p73              0666   secure_element        secure_element
+
+# Raw HID devices
+/dev/hidraw*     0660   system     system
