@@ -1,0 +1,21 @@
+# All unpinned blobs below are extracted from the release mentioned in proprietary-files.txt
+
+apusys.img;AB
+audio_dsp.img;AB
+ccu.img;AB
+dtbo.img;AB
+dpm.img;AB
+gpueb.img;AB
+gz.img;AB
+lk.img;AB
+logo.img;AB
+mcf_ota.img;AB
+mcupm.img;AB
+md1img.img;AB
+pi_img.img;AB
+preloader.img;AB
+scp.img;AB
+spmfw.img;AB
+sspm.img;AB
+tee.img;AB
+vcp.img;AB
