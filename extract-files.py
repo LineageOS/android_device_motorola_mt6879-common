@@ -89,6 +89,12 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('android.hardware.security.rkp-V3-ndk.so'),
     'vendor/lib64/mt6879/libmnl.so': blob_fixup()
         .add_needed('libcutils.so'),
+    'vendor/etc/libnfc-nxp_220.conf': blob_fixup()
+        .regex_replace('DEFAULT_ISODEP_ROUTE=0x01', 'DEFAULT_ISODEP_ROUTE=0xC0')
+        .regex_replace('DEFAULT_SYS_CODE_ROUTE=0x01', 'DEFAULT_SYS_CODE_ROUTE=0xC0')
+        .regex_replace('DEFAULT_OFFHOST_ROUTE=0x01', 'DEFAULT_OFFHOST_ROUTE=0xC0')
+        .regex_replace('OFFHOST_ROUTE_ESE={01}', 'OFFHOST_ROUTE_ESE={C0}')
+        .add_line_if_missing('DEFAULT_NFCF_ROUTE=0xC0'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
