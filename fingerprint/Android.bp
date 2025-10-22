@@ -4,6 +4,9 @@ cc_binary {
     init_rc: ["android.hardware.biometrics.fingerprint@2.3-service.manaus.rc"],
     vintf_fragments: ["android.hardware.biometrics.fingerprint@2.3-service.manaus.xml"],
     relative_install_path: "hw",
+    cflags: [
+        "-DLOG_TAG=\"android.hardware.biometrics.fingerprint@2.3-service.manaus\"",
+    ],
     srcs: [
         "service.cpp",
         "BiometricsFingerprint.cpp",
