@@ -1432,8 +1432,6 @@ system_ext/bin/vtservice
 system_ext/etc/init/init.vtservice.rc
 system/etc/permissions/moto-telephony.xml
 system/framework/moto-telephony.jar
-system_ext/framework/mediatek-common.jar
-system_ext/framework/mediatek-framework.jar
 system_ext/framework/mediatek-ims-base.jar
 system_ext/framework/mediatek-ims-oem-plugin.jar
 system_ext/lib64/libcomutils.so
