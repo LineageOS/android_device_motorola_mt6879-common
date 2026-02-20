@@ -1120,7 +1120,6 @@ vendor/bin/ccci_rpcd
 vendor/bin/hw/mtkfusionrild
 vendor/bin/hw/vendor.mediatek.hardware.mmagent@1.1-service
 vendor/bin/hw/vendor.mediatek.hardware.nwk_opt@1.0-service
-vendor/bin/ipsec_mon
 vendor/bin/muxreport
 vendor/etc/MNL_Config.xml
 vendor/etc/apdb/APDB_MT6879___W2408
@@ -1138,7 +1137,6 @@ vendor/etc/ecc_list_preference.xml
 vendor/etc/init/init.bip_ap.rc
 vendor/etc/init/init.cccimdinit.rc
 vendor/etc/init/init.cccirpcd.rc
-vendor/etc/init/ipsec_mon.rc
 vendor/etc/init/mtkrild.rc
 vendor/etc/init/muxreport.rc
 vendor/etc/init/vendor.mediatek.hardware.mmagent@1.1-service.rc
@@ -1258,8 +1256,6 @@ vendor/lib64/sensors.moto.so
 
 # Tether offload
 vendor/bin/hw/tetheroffloadservice
-vendor/bin/netdagent
-vendor/etc/init/netdagent.rc
 vendor/etc/init/tetheroffloadservice.rc
 vendor/lib64/libforkexecwrap.so
 vendor/lib64/libifcutils_mtk.so
