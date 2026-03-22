@@ -4,7 +4,7 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="org.lineageos.lineagesettings.overlay.manaus">
+          package="org.lineageos.lineagesettings.overlay.mt6879">
     <overlay android:targetPackage="org.lineageos.lineagesettings"
              android:isStatic="true"
              android:priority="100" />

@@ -5,6 +5,6 @@
 //
 
 runtime_resource_overlay {
-    name: "LineageSettingsProviderOverlayManaus",
+    name: "LineageApertureOverlayMT6879",
     product_specific: true,
 }
