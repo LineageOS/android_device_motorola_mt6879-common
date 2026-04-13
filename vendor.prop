@@ -282,6 +282,9 @@ ro.mtk_key_manager_support=1
 ro.vendor.mtk_tee_gp_support=1
 ro.vendor.mtk_trustonic_tee_support=1
 
+# UVC
+ro.usb.uvc.enabled=true
+
 # WiFi
 ro.vendor.wifi.sap.concurrent.iface=ap1
 ro.vendor.wifi.sap.interface=ap0
