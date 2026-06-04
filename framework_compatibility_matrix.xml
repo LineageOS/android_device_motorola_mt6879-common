@@ -193,4 +193,16 @@
         <instance>default</instance>
     </interface>
 </hal>
+<hal format="hidl" optional="true">
+    <name>com.motorola.hardware.biometric.fingerprint</name>
+    <version>1.1</version>
+    <interface>
+        <name>IMotoFingerPrint</name>
+        <instance>default</instance>
+    </interface>
+    <interface>
+        <name>IMotoFingerPrintSensorTest</name>
+        <instance>default</instance>
+    </interface>
+</hal>
 </compatibility-matrix>

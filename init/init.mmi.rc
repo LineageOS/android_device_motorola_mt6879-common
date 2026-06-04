@@ -75,6 +75,8 @@ on post-fs-data
 
     copy /data/vendor_de/power_supply_logger/memtest.log /data/vendor/power_supply_logger/memtest.log
 
+    start vendor.hal-fps-sh
+
 service vendor.bl_logs_copy /vendor/bin/apanic_copy.sh -i
     class late_start
     group log
@@ -144,10 +146,11 @@ service vendor.mmi-shutdown-sh /vendor/bin/init.mmi.shutdown.sh
     disabled
 
 service vendor.hal-fps-sh /vendor/bin/init.oem.fingerprint2.sh
-    class late_start
+    class main
     user root
     group system
     oneshot
+    disabled
 
 service vendor.oem-hw-sh /vendor/bin/init.oem.hw.sh
     class core

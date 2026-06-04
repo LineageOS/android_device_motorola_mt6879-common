@@ -7,14 +7,14 @@
         <interface>
             <name>IBiometricsFingerprint</name>
             <instance>default</instance>
+            <fqname>@2.1::IBiometricsFingerprint/default</fqname>
+            <fqname>@2.3::IBiometricsFingerprint/default</fqname>
         </interface>
-        <fqname>@2.1::IBiometricsFingerprint/default</fqname>
-        <fqname>@2.3::IBiometricsFingerprint/default</fqname>
     </hal>
     <hal format="hidl">
         <name>com.motorola.hardware.biometric.fingerprint</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IMotoFingerPrint</name>
             <instance>default</instance>
