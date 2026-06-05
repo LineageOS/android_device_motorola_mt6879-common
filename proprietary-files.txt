@@ -804,6 +804,11 @@ vendor/lib64/libwvhidl.so
 vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
+# Euicc
+product/app/EuiccPartnerApp/EuiccPartnerApp.apk;PRESIGNED
+product/etc/permissions/privapp-permissions-com.google.android.euicc.xml
+product/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED
+
 # Fingerprint
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-goodixservice
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-ets;DISABLE_CHECKELF

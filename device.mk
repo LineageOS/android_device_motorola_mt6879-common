@@ -154,13 +154,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.android.hardware.drm.clearkey
 
-# EUICC
-PRODUCT_PACKAGES += \
-    MotoEuicc
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.xml
-
 # FastbootD
 PRODUCT_PACKAGES += \
     android.hardware.fastboot-service.example_recovery \
@@ -262,6 +255,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 PRODUCT_PACKAGES += \
+    EuiccOverlayManaus \
     FrameworkOverlayManaus \
     SettingsOverlayManaus \
     SystemUIOverlayManaus \
