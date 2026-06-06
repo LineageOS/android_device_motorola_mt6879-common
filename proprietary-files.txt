@@ -9,7 +9,6 @@ vendor/etc/ap_gain_mmul.bin
 vendor/etc/aurisys_config.xml
 vendor/etc/aurisys_config_hifi3.xml
 vendor/etc/aurisys_config_rv.xml
-vendor/etc/init/bootperf.rc
 vendor/etc/permissions/com.mediatek.hardware.vow_dsp.xml
 vendor/etc/smartpa_param/AW_DSP.bin
 vendor/lib64/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib64/hw/audio.primary.mt6879.so
@@ -981,9 +980,6 @@ vendor/bin/init.mmi.block_perm.sh
 vendor/bin/init.mmi.boot.sh
 vendor/bin/init.mmi.shutdown.sh
 vendor/bin/init.mmi.touch.sh
-vendor/bin/kpgather
-vendor/bin/kpreadwrite
-vendor/bin/pstore_annotate.sh
 vendor/bin/vendor.mmi.cxp.sh
 vendor/etc/init/hw/init.mmi.backup.trustlet.rc
 vendor/etc/init/vendor.mmi.carrier.rc
