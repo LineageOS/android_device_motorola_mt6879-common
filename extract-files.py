@@ -98,8 +98,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('android.hardware.security.rkp-V3-ndk.so'),
     'vendor/lib64/mt6879/libmnl.so': blob_fixup()
         .add_needed('libcutils.so'),
-    'vendor/lib64/com.motorola.hardware.biometric.fingerprint@1.1.so': blob_fixup()
-        .add_needed('libshim_fp.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
