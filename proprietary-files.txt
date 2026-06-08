@@ -870,8 +870,6 @@ vendor/etc/init/vendor.mediatek.hardware.keymaster_attestation@1.1-service.rc
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service.trustonic.xml
 vendor/etc/vintf/manifest/android.hardware.security.secureclock-service.trustonic.xml
 vendor/etc/vintf/manifest/android.hardware.security.sharedsecret-service.trustonic.xml
-vendor/lib/libdecrypt.so
-vendor/lib/libthha.so;DISABLE_CHECKELF
 vendor/lib64/hw/kmsetkey.trustonic.so;SYMLINK=vendor/lib64/hw/kmsetkey.default.so
 vendor/lib64/hw/vendor.mediatek.hardware.keymaster_attestation@1.1-impl.so
 vendor/lib64/libdecrypt.so
