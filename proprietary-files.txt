@@ -12,8 +12,6 @@ vendor/etc/aurisys_config_rv.xml
 vendor/etc/init/bootperf.rc
 vendor/etc/permissions/com.mediatek.hardware.vow_dsp.xml
 vendor/etc/smartpa_param/AW_DSP.bin
-vendor/lib/libbwc.so
-vendor/lib/libladder.so
 vendor/lib64/hw/audio.primary.mediatek.so;SYMLINK=vendor/lib64/hw/audio.primary.mt6879.so
 vendor/lib64/hw/audio.r_submix.mediatek.so;SYMLINK=vendor/lib64/hw/audio.r_submix.mt6879.so
 vendor/lib64/hw/sound_trigger.primary.default.so
@@ -676,7 +674,6 @@ vendor/firmware/soc7_0_ram_mcu_1_1_hdr.bin
 vendor/firmware/soc7_0_ram_mcu_1a_1_hdr.bin
 vendor/firmware/soc7_0_ram_mcu_1b_1_hdr.bin
 vendor/firmware/soc7_0_ram_wmmcu_1a_1_hdr.bin
-vendor/lib/libconnfem.so
 vendor/lib64/libconnfem.so
 
 # Chipinfo
