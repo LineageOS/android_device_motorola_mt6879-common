@@ -1,5 +1,5 @@
 on early-init
-    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules mmi_gauge_class nfg1000_fg_mmi smart_battery qpnp_adaptive_charge sensors_class leds-gpio awinic_sar sx937x_sar moto_mmap_fault
+    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules mmi_gauge_class nfg1000_fg_mmi smart_battery qpnp_adaptive_charge sensors_class leds-gpio awinic_sar sx937x_sar
 
 on early-init && property:ro.boot.radio=4
     setprop ro.vendor.hw.fuelgauge int_fg
@@ -56,7 +56,6 @@ on late-init
     chown system system /sys/class/sensors/capsense_top_mid/poll_delay
     chown system system /sys/class/sensors/capsense_top_right/enable
     chown system system /sys/class/sensors/capsense_top_right/poll_delay
-    exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules moto_mm moto_swap moto_binder moto_sched
 
 service capsense_reset /vendor/bin/capsense_reset
     class core
