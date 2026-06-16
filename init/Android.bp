@@ -33,7 +33,7 @@ prebuilt_etc {
 prebuilt_etc {
     name: "init_conninfra.rc",
     src: "init_conninfra.rc",
-    relative_install_path: "init",
+    relative_install_path: "init/hw",
     vendor: true,
 }
 
