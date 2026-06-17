@@ -7,7 +7,6 @@
 cc_library_shared {
     name: "sensors.manaus",
     defaults: ["hidl_defaults"],
-    init_rc: ["sensors.manaus.rc"],
     srcs: [
         "Sensor.cpp",
         "SensorsSubHal.cpp",
