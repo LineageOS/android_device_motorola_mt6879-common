@@ -879,14 +879,9 @@ vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.0.so
 vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.1.so
 
 # Media
-vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b
 vendor/etc/AbnormalDisplayLog_dynamic.xml
 vendor/etc/VideoLog_dynamic.xml
-vendor/etc/init/android.hardware.media.c2@1.2-mediatek-64b.rc
 vendor/etc/mtk_platform_codecs_config.xml
-vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
-vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
-vendor/etc/vintf/manifest/manifest_media_c2_V1_1_dolby_default9.xml:vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml
 vendor/lib64/AVCSecureVdecCA.so
 vendor/lib64/HEVCSecureVdecCA.so
 vendor/lib64/VP9SecureVdecCA.so

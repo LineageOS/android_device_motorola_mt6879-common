@@ -58,13 +58,6 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libutils.so','libutils-v32.so')
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v31.so')
         .replace_needed('libalsautils.so','libalsautils-v31.so'),
-    'vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml': blob_fixup()
-        .regex_replace('1.1', '1.2')
-        .regex_replace('@1.0', '@1.2')
-        .regex_replace('default9', 'default'),
-    'vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b': blob_fixup()
-        .add_needed('libstagefright_foundation-v33.so')
-        .replace_needed('libavservices_minijail_vendor.so', 'libavservices_minijail.so'),
     'vendor/bin/mnld': blob_fixup()
         .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so'),
     ('vendor/lib64/hw/mt6879/android.hardware.camera.provider@2.6-impl-mediatek.so', 'vendor/lib64/mt6879/libmtkcam_stdutils.so'): blob_fixup()
