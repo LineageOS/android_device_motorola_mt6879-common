@@ -1,0 +1,12 @@
+# init.qti.kernel.rc sched
+allow vendor_init vendor_proc_kernel_sched:file rw_file_perms;
+
+# Dalvik props
+set_prop(vendor_init, dalvik_config_prop)
+
+# Mot props
+set_prop(vendor_init, vendor_mot_prop)
+
+# Sku prop
+set_prop(vendor_init, vendor_sku_prop)
+set_prop(vendor_init, vendor_mtk_powerhal_prop)

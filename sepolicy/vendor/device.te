@@ -1,0 +1,6 @@
+# Partitions
+type vendor_hw_block_device, dev_type;
+type vendor_utags_block_device, dev_type;
+
+# Fingerprint
+type fps_device, dev_type;

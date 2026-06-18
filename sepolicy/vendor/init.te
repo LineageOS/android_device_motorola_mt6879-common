@@ -1,0 +1,2 @@
+# Product persist mounting
+allow init mnt_product_file:dir mounton;
