@@ -39,6 +39,9 @@
 # NFC
 /dev/nq-nci u:object_r:nfc_device:s0
 
+# Touch HAL
+/vendor/bin/hw/vendor\.lineage\.touch-service\.motorola    u:object_r:hal_lineage_touch_default_exec:s0
+
 # Vendor init scripts
 /vendor/bin/init\.mmi\.boot\.sh                    u:object_r:vendor_mmi_boot_exec:s0
 /vendor/bin/init\.oem\.fingerprint2\.sh            u:object_r:vendor_init_fingerprint_exec:s0
