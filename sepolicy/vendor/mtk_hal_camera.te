@@ -3,7 +3,7 @@ allow mtk_hal_camera vendor_camera_data_file:file create_file_perms;
 allow mtk_hal_camera vendor_camera_data_file:dir create_dir_perms;
 
 allow mtk_hal_camera persist_data_file:dir search;
-allow mtk_hal_camera camera_persist_file:dir search;
+allow mtk_hal_camera vendor_persist_camera_file:dir search;
 
 allow mtk_hal_camera vendor_imager_data_file:dir rw_dir_perms;
 allow mtk_hal_camera vendor_imager_data_file:file rw_file_perms;
@@ -16,4 +16,4 @@ get_prop(mtk_hal_camera, system_mot_camera_prop)
 get_prop(mtk_hal_camera, vendor_mot_prop)
 get_prop(mtk_hal_camera, vendor_camera_persist_prop)
 set_prop(mtk_hal_camera, vendor_camera_persist_prop)
-set_prop(mtk_hal_camera, vendor_mot_camera_prop)
+set_prop(mtk_hal_camera, vendor_mot_prop)

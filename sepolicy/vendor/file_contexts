@@ -2,7 +2,7 @@
 /data/vendor/misc/imager(/.*)? u:object_r:vendor_imager_data_file:s0
 /data/vendor/misc/imager/metadata(/.*)? u:object_r:vendor_imager_metadata_file:s0
 /data/vendor/misc/imager u:object_r:vendor_camera_data_file:s0
-/mnt/vendor/persist/camera(/.*)? u:object_r:camera_persist_file:s0
+/mnt/vendor/persist/camera(/.*)? u:object_r:vendor_persist_camera_file:s0
 /data/vendor/camera(/.*)? u:object_r:vendor_camera_data_file:s0
 /vendor/bin/hw/motorola\.hardware\.camera\.imgtuner\.aidl-service                      u:object_r:hal_camera_default_exec:s0
 
@@ -13,12 +13,12 @@
 /data/vendor/.fps(/.*)?                                                                     u:object_r:fingerprint_vendor_data_file:s0
 /data/vendor/egis(/.*)?                                                                     u:object_r:fingerprint_vendor_data_file:s0
 /data/vendor/gf_data(/.*)?                                                                  u:object_r:fingerprint_vendor_data_file:s0
-/dev/esfp0                                                                                  u:object_r:fps_device:s0
-/dev/fpsensor                                                                               u:object_r:fps_device:s0
-/dev/goodix_fp                                                                              u:object_r:fps_device:s0
-/mnt/vendor/persist/egis(/.*)?                                                              u:object_r:vendor_persist_fps_file:s0
-/mnt/vendor/persist/fps(/.*)?                                                               u:object_r:vendor_persist_fps_file:s0
-/mnt/vendor/persist/goodix(/.*)?                                                            u:object_r:vendor_persist_fps_file:s0
+/dev/esfp0                                                                                  u:object_r:tee_device:s0
+/dev/fpsensor                                                                               u:object_r:tee_device:s0
+/dev/goodix_fp                                                                              u:object_r:tee_device:s0
+/mnt/vendor/persist/egis(/.*)?                                                              u:object_r:fingerprint_vendor_data_file:s0
+/mnt/vendor/persist/fps(/.*)?                                                               u:object_r:fingerprint_vendor_data_file:s0
+/mnt/vendor/persist/goodix(/.*)?                                                            u:object_r:fingerprint_vendor_data_file:s0
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint(@2\.1)?([\-\.])goodixservice      u:object_r:hal_fingerprint_default_exec:s0
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint(@2\.1)?-service([\-\.])ets        u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.manaus          u:object_r:hal_fingerprint_default_exec:s0
@@ -43,12 +43,13 @@
 /vendor/bin/hw/vendor\.lineage\.touch-service\.motorola    u:object_r:hal_lineage_touch_default_exec:s0
 
 # Vendor init scripts
-/vendor/bin/init\.mmi\.boot\.sh                    u:object_r:vendor_mmi_boot_exec:s0
-/vendor/bin/init\.oem\.fingerprint2\.sh            u:object_r:vendor_init_fingerprint_exec:s0
-/vendor/bin/init\.oem\.hw\.sh                      u:object_r:vendor_init_hw_exec:s0
-/vendor/bin/hardware_revisions\.sh                 u:object_r:vendor_moto_init_shell_exec:s0
-/vendor/bin/init\.mmi\.backup\.trustlet\.sh        u:object_r:vendor_moto_init_shell_exec:s0
-/vendor/bin/init\.mmi\.block_perm\.sh              u:object_r:vendor_moto_init_shell_exec:s0
-/vendor/bin/init\.mmi\.touch\.sh                   u:object_r:vendor_moto_init_shell_exec:s0
-/vendor/bin/vendor\.mmi\.cxp\.sh                   u:object_r:vendor_moto_init_shell_exec:s0
-/vendor/bin/init\.modprobe\.sh                     u:object_r:vendor_modinstall-sh_exec:s0
+/vendor/bin/hardware_revisions\.sh                                                     u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/init\.mmi\.backup\.trustlet\.sh                                            u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/init\.mmi\.block_perm\.sh                                                  u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/init\.mmi\.boot\.sh                                                        u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/init\.mmi\.touch\.sh                                                       u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/init\.mmi\.usb\.sh                                                         u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/init\.modprobe\.sh                                                         u:object_r:vendor_modinstall-sh_exec:s0
+/vendor/bin/init\.oem\.fingerprint2\.sh                                                 u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/init\.oem\.hw\.sh                                                          u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/vendor\.mmi\.cxp\.sh                                                       u:object_r:vendor_moto_init_shell_exec:s0
