@@ -1,0 +1,1 @@
+allow mtk_hal_pq vendor_mtk_mml_support_prop:file { getattr map open read };
