@@ -1,2 +1,3 @@
 allow wlan_assistant sysfs_dt_firmware_android:dir { read open search };
 allow wlan_assistant metadata_file:dir { read open search };
+allow wlan_assistant vendor_mot_prop:file { getattr map open read };
