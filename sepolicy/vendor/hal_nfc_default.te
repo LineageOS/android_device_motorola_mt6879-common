@@ -1,3 +1,4 @@
 # NFC property
 get_prop(hal_nfc_default, vendor_mot_prop)
+get_prop(hal_nfc_default, vendor_sku_prop)
 set_prop(hal_nfc_default, vendor_nfc_prop)
