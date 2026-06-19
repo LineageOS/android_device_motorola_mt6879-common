@@ -1,3 +1,5 @@
+allow init sysfs_power_supply:file { setattr };
+r_dir_file(init, sysfs_batteryinfo)
 set_prop(init, system_mot_radio_prop)
 set_prop(init, vendor_mot_prop)
 
