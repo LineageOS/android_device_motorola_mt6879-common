@@ -1,2 +1,5 @@
+set_prop(init, system_mot_radio_prop)
+set_prop(init, vendor_mot_prop)
+
 # Product persist mounting
 allow init mnt_product_file:dir mounton;
