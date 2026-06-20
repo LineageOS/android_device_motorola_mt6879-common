@@ -41,6 +41,7 @@ allow vendor_moto_init_shell tee_device:chr_file { getattr setattr };
 
 # /mnt/vendor/persist
 allow vendor_moto_init_shell persist_data_file:dir search;
+allow vendor_moto_init_shell persist_data_file:file rw_file_perms;
 
 # /proc/meminfo
 allow vendor_moto_init_shell proc_meminfo:file r_file_perms;
