@@ -11,7 +11,6 @@
 /data/vendor/egis(/.*)?                                                                     u:object_r:fingerprint_vendor_data_file:s0
 /data/vendor/gf_data(/.*)?                                                                  u:object_r:fingerprint_vendor_data_file:s0
 /dev/esfp0                                                                                  u:object_r:etsd_device:s0
-/dev/goodix_fp                                                                              u:object_r:fingerprint_device:s0
 /mnt/vendor/persist/egis(/.*)?                                                              u:object_r:vendor_persist_fingerprint_file:s0
 /mnt/vendor/persist/fps(/.*)?                                                               u:object_r:vendor_persist_fingerprint_file:s0
 /mnt/vendor/persist/goodix(/.*)?                                                            u:object_r:vendor_persist_fingerprint_file:s0
@@ -36,9 +35,6 @@
 
 # Neural Networks
 /vendor/lib(64)?/libapusys\.so                                                         u:object_r:same_process_hal_file:s0
-
-# NFC
-/dev/nq-nci u:object_r:nfc_device:s0
 
 # Touch HAL
 /vendor/bin/hw/vendor\.lineage\.touch-service\.motorola    u:object_r:hal_lineage_touch_default_exec:s0
