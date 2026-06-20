@@ -7,6 +7,7 @@ init_daemon_domain(vendor_moto_init_shell)
 allow vendor_moto_init_shell self:capability { chown fsetid fowner };
 allow vendor_moto_init_shell vendor_file:file execute_no_trans;
 allow vendor_moto_init_shell { vendor_toolbox_exec vendor_shell_exec vendor_motobox_exec }:file rx_file_perms;
+allow vendor_moto_init_shell block_device:dir search;
 
 # /mnt/vendor/persist/fps access
 allow vendor_moto_init_shell mnt_vendor_file:dir search;
