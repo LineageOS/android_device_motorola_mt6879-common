@@ -1077,6 +1077,7 @@ vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.2.so
 # NFC
 vendor/bin/pnscr
 vendor/bin/pnscr_cal
+vendor/etc/libnfc-nxp.conf
 vendor/etc/libese-nxp.conf
 vendor/etc/libnfc-nci.conf
 vendor/etc/libnfc-nci_100.conf

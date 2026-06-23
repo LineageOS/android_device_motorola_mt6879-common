@@ -263,6 +263,7 @@ PRODUCT_PACKAGES += \
     SettingsOverlayManaus \
     SystemUIOverlayManaus \
     Launcher3DeviceOverlay \
+    NfcOverlayManaus \
     TetheringOverlayManaus \
     WifiOverlayManaus \
     TelephonyOverlayManaus \

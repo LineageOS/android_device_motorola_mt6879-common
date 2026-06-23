@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- List of SKUs where Secure NFC functionality is supported -->
+    <string-array name="config_skuSupportsSecureNfc" translatable="false">
+        <item>XT2307-1</item>
+        <item>XT2307-2</item>
+        <item>XT2307-3</item>
+    </string-array>
+    <bool name="enable_secure_nfc_support">true</bool>
+</resources>
