@@ -11,8 +11,10 @@ allow hal_fingerprint_default hal_fingerprint_default:netlink_socket { create bi
 allow hal_fingerprint_default self:netlink_kobject_uevent_socket { create setopt bind read };
 allow hal_fingerprint_default hal_fingerprint_default:binder { call transfer };
 allow hal_fingerprint_default persist_data_file:file { getattr open read };
+allow hal_fingerprint_default etsd_device:chr_file rw_file_perms;
 allow hal_fingerprint_default dri_device:chr_file rw_file_perms;
 rw_dir_file(hal_fingerprint_default, dri_device)
+rw_dir_file(hal_fingerprint_default, etsd_device)
 # fingerprint status prop
 set_prop(hal_fingerprint_default, vendor_mot_prop)
 hwbinder_use(hal_fingerprint_default)
@@ -21,5 +23,6 @@ allow hal_fingerprint_default mnt_vendor_file:dir search;
 hal_client_domain(hal_fingerprint_default, hal_power)
 hal_client_domain(hal_fingerprint_default, hal_health)
 r_dir_file(hal_fingerprint_default, sysfs_batteryinfo)
+r_dir_file(hal_fingerprint_default, sysfs_power_supply)
 allow hal_fingerprint_default fingerprint_device:chr_file { open read write ioctl getattr };
 allow hal_fingerprint_default persist_data_file:dir search;
