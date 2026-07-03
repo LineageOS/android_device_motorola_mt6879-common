@@ -11,6 +11,7 @@ AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
     boot \
     system \
+    dtbo \
     system_ext \
     product \
     vendor \
@@ -67,6 +68,7 @@ BOARD_KERNEL_CMDLINE += androidboot.serialconsole=0
 BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
 
 TARGET_FORCE_PREBUILT_KERNEL := true
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)-kernel/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)-kernel/dtb
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)-kernel/Image.gz:kernel
@@ -92,6 +94,7 @@ TARGET_KERNEL_SOURCE := $(DEVICE_PATH)-kernel/headers/
 -include vendor/lineage/config/BoardConfigReservedSize.mk
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_SUPER_PARTITION_SIZE := 7507804160
 BOARD_SUPER_PARTITION_GROUPS := motorola_dynamic_partitions
