@@ -296,6 +296,10 @@ ro.vendor.mtk_trustonic_tee_support=1
 # UVC
 ro.usb.uvc.enabled=true
 
+# UDFPS
+persist.vendor.fingerprint.type=udfps
+persist.vendor.fingerprint.sensor_location=540:2164:98
+
 # WiFi
 ro.vendor.wifi.sap.concurrent.iface=ap1
 ro.vendor.wifi.sap.interface=ap0

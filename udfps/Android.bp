@@ -1,0 +1,17 @@
+cc_library_shared {
+    name: "libudfpshandler",
+    srcs: ["ManausUdfpsHandler.cpp"],
+    vendor: true,
+    shared_libs: [
+        "libbase",
+        "libhidlbase",
+        "liblog",
+        "libutils",
+        "com.motorola.hardware.biometric.fingerprint@1.0",
+        "vendor.egistec.hardware.fingerprint@4.0",
+    ],
+    header_libs: [
+        "generated_kernel_headers",
+        "libudfpshandler_headers",
+    ],
+}
