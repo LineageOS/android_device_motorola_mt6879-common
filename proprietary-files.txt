@@ -1,5 +1,5 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
-## are from moto edge 40 neo (15 V1TMS35H.3-45-3-2-3 4b40ea).
+## are from moto edge 40 neo (manaus_g_sys-user 15 V1TMS35H.3-45-3-2-4 f3329e-e3b696).
 ## variant: RETAIL
 
 # Audio
