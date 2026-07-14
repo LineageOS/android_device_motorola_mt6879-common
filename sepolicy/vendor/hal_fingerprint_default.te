@@ -11,8 +11,10 @@ allow hal_fingerprint_default hal_fingerprint_default:netlink_socket { create bi
 allow hal_fingerprint_default self:netlink_kobject_uevent_socket { create setopt bind read };
 allow hal_fingerprint_default hal_fingerprint_default:binder { call transfer };
 allow hal_fingerprint_default persist_data_file:file { getattr open read };
+allow hal_fingerprint_default fingerprint_vendor_data_file:dir create_dir_perms;
 allow hal_fingerprint_default etsd_device:chr_file rw_file_perms;
 allow hal_fingerprint_default dri_device:chr_file rw_file_perms;
+rw_dir_file(hal_fingerprint_default, fps_data_file)
 rw_dir_file(hal_fingerprint_default, dri_device)
 # fingerprint status prop
 set_prop(hal_fingerprint_default, vendor_mot_prop)

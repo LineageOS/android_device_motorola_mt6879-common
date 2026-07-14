@@ -1,2 +1,4 @@
+allow tee fingerprint_vendor_data_file:dir create_dir_perms;
+
 # /mnt/vendor/persist/goodix
 r_dir_file(tee, vendor_persist_fingerprint_file)
