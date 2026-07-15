@@ -1,0 +1,10 @@
+type nxpnfcinfo, domain;
+type nxpnfcinfo_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(nxpnfcinfo)
+
+# Allow nxpnfcinfo to read and write to NFC device node
+allow nxpnfcinfo nfc_device:chr_file rw_file_perms;
+
+# Allow nxpnfcinfo to set vendor nfc properties (vendor.qti.nfc.chipid)
+set_prop(nxpnfcinfo, vendor_nfc_prop)

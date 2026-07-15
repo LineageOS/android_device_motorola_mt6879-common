@@ -153,8 +153,6 @@ vendor.mtk.vdec.waitkeyframeforplay=9
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
 # NFC
-persist.vendor.nfc.config_file_name=libnfc-nxp_220.conf
-persist.vendor.nfc.config_secfile_name=libnfc-sec-nci.conf
 persist.vendor.nfc.reset_after_sim_plug_in=true
 
 # Neural Networks

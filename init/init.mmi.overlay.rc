@@ -70,29 +70,36 @@ service capsense_reset /vendor/bin/capsense_reset
     group system input
     disabled
 
-service nxpnfcinfo /system/vendor/bin/nxpnfcinfo
+on property:ro.vendor.hw.esim=""
+    mount none /product/lost+found /product/etc/permissions/android.hardware.telephony.euicc.xml bind
+
+service nxpnfcinfo /vendor/bin/nxpnfcinfo
     class late_start
     group nfc
     user system
     oneshot
 
-on property:ro.vendor.hw.esim=""
-    mount none /product/lost+found /product/etc/permissions/android.hardware.telephony.euicc.xml bind
-
-on property:ro.vendor.hw.nfc=nq && property:persist.vendor.nfc.config_file_name=*
+on property:vendor.qti.nfc.chipid=0xca
+    setprop persist.vendor.nfc.config_file_name libnfc-nxp_560.conf
     start vendor.nfc_hal_service
 
-on property:ro.vendor.hw.nfc=ese_nq && property:persist.vendor.nfc.config_file_name=*
+on property:vendor.qti.nfc.chipid=0xc1 && property:ro.boot.product.hardware.sku=be
+    setprop persist.vendor.nfc.config_file_name libnfc-nxp_220.conf 
     start vendor.nfc_hal_service
 
-on property:ro.vendor.hw.nfc=true && property:persist.vendor.nfc.config_file_name=*
+on property:vendor.qti.nfc.chipid=0xc1 && property:ro.boot.product.hardware.sku=de
+    setprop persist.vendor.nfc.config_file_name libnfc-nxp_220e.conf
     start vendor.nfc_hal_service
 
-service vendor.nxp_service /vendor/bin/hw/android.hardware.nfc-service.nxp
+on property:vendor.qti.nfc.chipid=0xc1 && property:ro.boot.product.hardware.sku=dn
+    setprop persist.vendor.nfc.config_file_name libnfc-nxp.conf
+    start vendor.nfc_hal_service
+
+service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc-service.nxp
     override
-    class hal
+    class early_hal
     user nfc
-    group nfc
+    group nfc drmrpc system
     disabled
 
 on property:ro.vendor.hw.nfc=ese_nq
@@ -110,7 +117,7 @@ on property:ro.vendor.hw.nfc=nq
    wait /dev/nq-nci
    chown nfc nfc /dev/nq-nci
    chmod 0666 /dev/nq-nci
-   start vendor.nxp_service
+   start vendor.nfc_hal_service
 
 on property:ro.vendor.hw.nfc=ese_nq
    insmod /vendor/lib/modules/nxp_i2c.ko
@@ -121,7 +128,7 @@ on property:ro.vendor.hw.nfc=ese_nq
    wait /dev/p73
    chown secure_element secure_element /dev/p73
    chmod 0666 /dev/p73
-   start vendor.nxp_service
+   start vendor.nfc_hal_service
 
 on property:sys.boot_completed=1
     start capsense_reset

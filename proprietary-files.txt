@@ -1066,6 +1066,7 @@ vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.2.so
  
 # NFC
+vendor/bin/nxpnfcinfo
 vendor/bin/pnscr
 vendor/bin/pnscr_cal
 vendor/etc/libnfc-nxp.conf
@@ -1083,6 +1084,7 @@ vendor/etc/libnfc-nxp_560.conf
 vendor/etc/nfc_calibration.txt
 vendor/etc/sn100u_nfcon.pnscr
 vendor/etc/sn100u_pnx_ese_cplc.pnscr
+vendor/lib64/libnxp_extamp_intf.so
 vendor/lib64/libpn557_fw.so
 vendor/lib64/libpn560_fw.so
 vendor/lib64/libsn100u_fw.so

@@ -47,6 +47,7 @@
 /vendor/bin/init\.oem\.fingerprint2\.sh                                                 u:object_r:vendor_moto_init_shell_exec:s0
 /vendor/bin/init\.oem\.hw\.sh                                                          u:object_r:vendor_moto_init_shell_exec:s0
 /vendor/bin/vendor\.mmi\.cxp\.sh                                                       u:object_r:vendor_moto_init_shell_exec:s0
+/vendor/bin/nxpnfcinfo                                                                  u:object_r:nxpnfcinfo_exec:s0
 
 # Wakeups
 /sys/devices/platform/soc/[^*]+/wakeup/wakeup[0-9]+(/.*)?                              u:object_r:sysfs_wakeup:s0

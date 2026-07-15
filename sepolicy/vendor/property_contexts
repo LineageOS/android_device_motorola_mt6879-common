@@ -30,6 +30,8 @@ ro.vendor.product.name                    u:object_r:vendor_mot_prop:s0
 # NFC
 persist.vendor.nfc. u:object_r:vendor_nfc_prop:s0
 vendor.nfc.fw_status u:object_r:vendor_nfc_prop:s0
+vendor.qti.nfc.chipid u:object_r:vendor_nfc_prop:s0
+
 
 # SKU
 ro.boot.product.hardware.sku u:object_r:vendor_sku_prop:s0
