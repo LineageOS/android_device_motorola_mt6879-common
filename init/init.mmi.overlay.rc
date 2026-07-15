@@ -161,6 +161,10 @@ on boot
     chmod 0660 /sys/class/capsense/fw_download_status
     chmod 0660 /sys/class/capsense/mode
 
+    # Allow system to change fast charging current node
+    chown system system /sys/devices/platform/charger/power_supply/mtk-master-charger/constant_charge_current_max
+    chmod 0660 /sys/devices/platform/charger/power_supply/mtk-master-charger/constant_charge_current_max
+
     # Change ownership and permission for charge pump factory testing
     chown system system /sys/class/power_supply/cp-master/voltage_now
     chown system system /sys/class/power_supply/cp-master/device/force_chg_auto_enable

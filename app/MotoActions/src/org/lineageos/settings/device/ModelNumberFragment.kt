@@ -17,14 +17,14 @@ package org.lineageos.settings.device
 
 import android.os.Bundle
 import androidx.preference.Preference
-import androidx.preference.PreferenceFragment
+import com.android.settingslib.widget.SettingsBasePreferenceFragment
 
-class ModelNumberFragment : PreferenceFragment() {
+class ModelNumberFragment : SettingsBasePreferenceFragment() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        addPreferencesFromResource(R.xml.model_number_panel)
+        setPreferencesFromResource(R.xml.model_number_panel, rootKey)
         findPreference<Preference>(MotoActionsSettings.MODEL_NUMBER_KEY)
-            ?.setSummary(MotoActionsSettings.getModelNumberString(activity))
+            ?.setSummary(MotoActionsSettings.getModelNumberString(requireContext()))
         findPreference<Preference>(MotoActionsSettings.CARRIER_KEY)
-            ?.setSummary(MotoActionsSettings.getCarrierString(activity))
+            ?.setSummary(MotoActionsSettings.getCarrierString(requireContext()))
     }
 }

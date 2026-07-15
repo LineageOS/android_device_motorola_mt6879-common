@@ -23,6 +23,24 @@ class BootCompletedReceiver : BroadcastReceiver() {
             UserHandle.CURRENT,
         )
         felicaDisabler(context)
+        turboChargingDisabler(context)
+    }
+
+    private fun turboChargingDisabler(context: Context) {
+        val chargerFile = java.io.File("/sys/devices/platform/charger/power_supply/mtk-master-charger/constant_charge_current_max")
+        val isSupported = chargerFile.exists()
+        val flag = if (isSupported) {
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+        } else {
+            PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+        }
+        try {
+            val component = android.content.ComponentName(context, TurboChargingActivity::class.java)
+            context.packageManager.setComponentEnabledSetting(component, flag, PackageManager.DONT_KILL_APP)
+            Log.i(TAG, "Turbo charging control support: $isSupported")
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to set TurboChargingActivity enabled state", e)
+        }
     }
 
     private fun felicaDisabler(context: Context) {

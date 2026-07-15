@@ -5,6 +5,7 @@
 
 android_app {
     name: "MotoActionsManaus",
+    overrides: ["MotoActions"],
     defaults: ["SettingsLibDefaults"],
 
     srcs: ["src/**/*.kt"],
@@ -18,6 +19,7 @@ android_app {
     static_libs: [
         "androidx.core_core",
         "androidx.preference_preference",
+        "com.google.android.material_material",
         "org.lineageos.settings.resources",
     ],
 
@@ -31,20 +33,4 @@ android_app {
         "org.lineageos.settings.device.xml",
         "hidden-api-whitelist-org.lineageos.settings.device.xml",
     ],
-}
-
-prebuilt_etc {
-    sub_dir: "permissions",
-    name: "org.lineageos.settings.device.xml",
-    filename: "org.lineageos.settings.device.xml",
-    src: "org.lineageos.settings.device.xml",
-    system_ext_specific: true,
-}
-
-prebuilt_etc {
-    sub_dir: "sysconfig",
-    name: "hidden-api-whitelist-org.lineageos.settings.device.xml",
-    filename: "hidden-api-whitelist-org.lineageos.settings.device.xml",
-    src: "hidden-api-whitelist-org.lineageos.settings.device.xml",
-    system_ext_specific: true,
 }

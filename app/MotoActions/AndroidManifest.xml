@@ -27,7 +27,7 @@
 
         <receiver
             android:name=".BootCompletedReceiver"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -64,10 +64,24 @@
                 android:resource="@string/device_gestures_panel_summary" />
         </activity>
         <activity
+            android:name=".TurboChargingActivity"
+            android:exported="false"
+            android:label="@string/turbo_charge_title">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.battery" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/turbo_charge_summary" />
+        </activity>
+
+        <activity
             android:name=".ModelNumberActivity"
             android:exported="false"
-            android:label="@string/model_number_title"
-            android:theme="@style/Theme.SubSettingsBase">
+            android:label="@string/model_number_title">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>

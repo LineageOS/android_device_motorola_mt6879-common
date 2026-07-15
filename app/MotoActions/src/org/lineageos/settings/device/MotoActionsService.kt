@@ -14,8 +14,13 @@ import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.IBinder
+import android.os.UEventObserver
+import android.os.UEventObserver.UEvent
 import android.util.Log
 import androidx.preference.PreferenceManager
+import java.io.BufferedWriter
+import java.io.FileWriter
+import java.io.IOException
 import org.lineageos.settings.device.actions.ChopForTorch
 import org.lineageos.settings.device.actions.DozePulse
 import org.lineageos.settings.device.actions.FlipToMute
@@ -28,6 +33,8 @@ class MotoActionsService : Service() {
     private lateinit var dozePulse: DozePulse
 
     private val updatedStateNotifiers = mutableListOf<UpdatedStateNotifier>()
+
+    private var observer: UEventObserver? = null
 
     override fun onCreate() {
         Log.d(TAG, "Starting")
@@ -43,6 +50,8 @@ class MotoActionsService : Service() {
                         MotoActionsSettings.GESTURE_IR_SILENCER_KEY,
                         MotoActionsSettings.GESTURE_FLIP_TO_MUTE_KEY,
                         MotoActionsSettings.GESTURE_LIFT_TO_SILENCE_KEY -> updateState()
+                        "turbo_enable",
+                        "turbo_current" -> updateChargeCurrent()
                     }
                 }
                 registerOnSharedPreferenceChangeListener(prefListener)
@@ -62,6 +71,48 @@ class MotoActionsService : Service() {
         registerReceiver(screenStateReceiver, filter)
 
         updateState()
+
+        observer = object : UEventObserver() {
+            override fun onUEvent(event: UEvent) {
+                val chargerStatus = event.get("POWER_SUPPLY_ONLINE")
+                if (chargerStatus != null && chargerStatus == "2") {
+                    updateChargeCurrent()
+                }
+            }
+        }
+        observer?.startObserving("DEVPATH=/sys/class/power_supply/primary_chg")
+
+        updateChargeCurrent()
+    }
+
+    private fun updateChargeCurrent() {
+        val file = java.io.File(CHARGE_CURRENT_FILE)
+        if (!file.exists()) {
+            return
+        }
+
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val turboEnabled = sharedPrefs.getBoolean("turbo_enable", true)
+        Log.i(TAG, "isTurbo=$turboEnabled")
+        val defaultValue = "3000000"
+        val currentValue = if (turboEnabled) {
+            sharedPrefs.getString("turbo_current", "6800000") ?: "6800000"
+        } else {
+            defaultValue
+        }
+        Log.i(TAG, "currentValue=$currentValue")
+
+        try {
+            currentValue.toInt()
+            BufferedWriter(FileWriter(file)).use { writer ->
+                writer.write(currentValue)
+                Log.i(TAG, "Updated Charging current to $currentValue")
+            }
+        } catch (e: NumberFormatException) {
+            Log.e(TAG, "Invalid charge current value: $currentValue", e)
+        } catch (e: IOException) {
+            Log.e(TAG, "Failed to update charge current", e)
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -86,5 +137,6 @@ class MotoActionsService : Service() {
 
     companion object {
         private const val TAG = "MotoActionsService"
+        private const val CHARGE_CURRENT_FILE = "/sys/devices/platform/charger/power_supply/mtk-master-charger/constant_charge_current_max"
     }
 }

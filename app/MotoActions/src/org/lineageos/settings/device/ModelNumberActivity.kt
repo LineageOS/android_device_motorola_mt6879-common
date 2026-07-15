@@ -22,7 +22,7 @@ import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity
 class ModelNumberActivity : CollapsingToolbarBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fragmentManager
+        supportFragmentManager
             .beginTransaction()
             .replace(com.android.settingslib.collapsingtoolbar.R.id.content_frame, ModelNumberFragment())
             .commit()
