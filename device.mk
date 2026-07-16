@@ -218,7 +218,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # MotoActions
 PRODUCT_PACKAGES += \
-    MotoActions \
+    MotoActionsManaus \
     MotoCommonOverlay
 
 # Media
