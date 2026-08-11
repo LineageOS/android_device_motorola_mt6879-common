@@ -26,7 +26,6 @@ ro.vendor.bt.platform=6879
 
 # Camera
 camera.disable_zsl_mode=1
-persist.vendor.camera.physical.num=3
 persist.vendor.camera3.pipeline.bufnum.base.imgo=4
 persist.vendor.camera3.pipeline.bufnum.base.lcso=4
 persist.vendor.camera3.pipeline.bufnum.base.rrzo=4
