@@ -65,18 +65,19 @@ BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_CMDLINE += androidboot.serialconsole=0
 BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
 
-TARGET_FORCE_PREBUILT_KERNEL := true
-BOARD_PREBUILT_DTBOIMAGE := $(COMMON_PATH)-kernel/dtbo.img
-BOARD_PREBUILT_DTBIMAGE_DIR := $(COMMON_PATH)-kernel/dtb
-PRODUCT_COPY_FILES += \
-	$(COMMON_PATH)-kernel/Image.gz:kernel
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/motorola/mt6879
+TARGET_KERNEL_CLANG_VERSION := r416183b
+TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/kernel/$(HOST_PREBUILT_TAG)/clang-$(TARGET_KERNEL_CLANG_VERSION)
+KERNEL_LTO := thin
+TARGET_KERNEL_CONFIG := \
+    gki_defconfig \
+    vendor/mt6879.config \
+    vendor/$(PRODUCT_DEVICE).config
 
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(COMMON_PATH)-kernel/vendor/*.ko)
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)-kernel/modules.load.vendor))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(COMMON_PATH)-kernel/vendor_ramdisk/*.ko)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)-kernel/modules.load.vendor_ramdisk))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(COMMON_PATH)-kernel/modules.load.recovery))
-BOOT_KERNEL_MODULES := $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD) $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)
+TARGET_KERNEL_DTB := \
+    mediatek/mt6879.dtb
 
 BOARD_MKBOOTIMG_ARGS += \
     --dtb_offset $(BOARD_TAGS_OFFSET) \
@@ -84,9 +85,6 @@ BOARD_MKBOOTIMG_ARGS += \
     --kernel_offset $(BOARD_KERNEL_OFFSET) \
     --ramdisk_offset $(BOARD_RAMDISK_OFFSET) \
     --tags_offset $(BOARD_TAGS_OFFSET)
-
-TARGET_NO_KERNEL_OVERRIDE := true
-TARGET_KERNEL_SOURCE := $(COMMON_PATH)-kernel/headers/
 
 # Partitions
 -include vendor/lineage/config/BoardConfigReservedSize.mk
