@@ -14,10 +14,10 @@
 // limitations under the License.
 
 cc_binary {
-    name: "android.hardware.lights-service.manaus",
+    name: "android.hardware.lights-service.mt6879",
     relative_install_path: "hw",
-    init_rc: ["android.hardware.lights.manaus.rc"],
-    vintf_fragments: ["android.hardware.lights.manaus.xml"],
+    init_rc: ["android.hardware.lights.mt6879.rc"],
+    vintf_fragments: ["android.hardware.lights.mt6879.xml"],
     vendor: true,
     shared_libs: [
         "libbase",
