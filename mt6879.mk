@@ -87,7 +87,6 @@ PRODUCT_PACKAGES += \
     init.connectivity.rc \
     init.connectivity.common.rc \
     init_conninfra.rc \
-    init.mmi.overlay.rc \
     init.mmi.rc \
     init.recovery.mt6879.rc \
     init.mt6879.usb.rc \
@@ -95,7 +94,6 @@ PRODUCT_PACKAGES += \
     init.mt6879.rc \
     init.mtkgki.rc \
     init.oem.hw.sh \
-    init.oem.fingerprint2.sh \
     init.project.rc \
     init.sensor_2_0.rc \
     ueventd.mt6879.rc
