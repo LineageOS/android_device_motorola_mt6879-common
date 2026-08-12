@@ -996,7 +996,6 @@ vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 vendor/bin/hw/vendor.trustonic.tee@1.1-service
 vendor/bin/mcDriverDaemon
 vendor/etc/init/tee.rc
-vendor/etc/init/trustonic.rc
 vendor/etc/init/vendor.trustonic.tee@1.1-service.rc
 vendor/lib64/libMcClient.so
 vendor/lib64/libTEECommon.so
