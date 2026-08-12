@@ -5,6 +5,5 @@
 
 runtime_resource_overlay {
     name: "TetheringOverlayMT6879",
-    resource_dirs: ["res"],
     product_specific: true,
 }

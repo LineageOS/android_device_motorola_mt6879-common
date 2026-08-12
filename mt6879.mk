@@ -244,8 +244,7 @@ PRODUCT_PACKAGES += \
     NcmTetheringOverlay
 
 PRODUCT_PACKAGES += \
-    LineageApertureOverlayMT6879 \
-    LineageSettingsProviderOverlayMT6879
+    LineageApertureOverlayMT6879
 
 # Power-off Alarm
 PRODUCT_PACKAGES += \

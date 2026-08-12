@@ -1,41 +1,30 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
-  Copyright (C) 2023 The LineageOS Project
-
-  SPDX-License-Identifier: Apache-2.0
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
 -->
+<resources>
+    <!-- the padding on the start of the statusbar -->
+    <dimen name="status_bar_padding_start">9.5dp</dimen>
 
-<!-- These resources are around just to allow their values to be customized
-     for different hardware and product builds.  Do not translate.
+    <!-- the padding on the top of the statusbar (usually 0) -->
+    <dimen name="status_bar_padding_top">4dp</dimen>
 
-     NOTE: The naming convention is "config_camelCaseValue". Some legacy
-     entries do not follow the convention, but all new entries should. -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Height of the status bar header bar when on Keyguard -->
     <dimen name="status_bar_header_height_keyguard">@*android:dimen/status_bar_height_portrait</dimen>
 
-    <!-- The indication margin of keyguard -->
+    <dimen name="rounded_corner_content_padding">6dp</dimen>
+
     <dimen name="keyguard_indication_margin_bottom">8dp</dimen>
-
-    <!-- the padding on the top of the statusbar (usually 0) -->
-    <dimen name="status_bar_padding_top">4.0dip</dimen>
-
-    <!-- the padding on the start of the statusbar -->
-    <dimen name="status_bar_padding_start">9.5dip</dimen>
-
-    <!-- the padding on the end of the statusbar -->
-    <dimen name="status_bar_padding_end">4.0dip</dimen>
-
-    <!-- Adjust the icon padding in status bar for rounded corners --> 
-    <dimen name="rounded_corner_content_padding">6dp</dimen> 
-
-    <!-- Location on the screen of the center of the physical power button. -->
-    <dimen name="physical_power_button_center_screen_location_y">930.0px</dimen>
-
-    <!-- Location on the screen of the center of the physical volume up/down buttons. -->
-    <dimen name="physical_volume_up_button_center_screen_location_y">535.0px</dimen>
-    <dimen name="physical_volume_down_button_center_screen_location_y">692.0px</dimen>
 
     <!-- Blur radius behind Notification Shade -->
     <dimen name="max_shade_window_blur_radius">17dp</dimen>
+
+    <!-- Location on the screen of the center of the physical power button. This is a reasonable
+    default that should be overridden by device-specific overlays. -->
+    <dimen name="physical_power_button_center_screen_location_y">930px</dimen>
+
+    <!-- Microns/ums (1000 um = 1mm) per pixel for the given device. If unspecified, UI that
+         relies on this value will not be sized correctly. -->
+    <item format="float" name="pixel_pitch" type="dimen">63.2</item>
 </resources>
