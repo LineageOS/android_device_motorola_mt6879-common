@@ -26,6 +26,11 @@ genfscon proc /hw u:object_r:vendor_proc_hw:s0
 genfscon sysfs /class/touchscreen u:object_r:vendor_sysfs_touchpanel:s0
 genfscon sysfs /devices/virtual/touchscreen u:object_r:vendor_sysfs_touchpanel:s0
 
+# Vibrator
+genfscon sysfs /devices/platform/11e02000.i2c/i2c-6/6-005a/leds/vibrator/vmax u:object_r:vendor_sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11e02000.i2c/i2c-6/6-005a/leds/vibrator/activate u:object_r:vendor_sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11e02000.i2c/i2c-6/6-005a/leds/vibrator/state u:object_r:vendor_sysfs_vibrator:s0
+
 # Wakeup (https://lkml.org/lkml/2019/8/6/1275)
 genfscon sysfs /devices/platform/10001000.consys/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11cb0000.i2c/i2c-2/2-0020/wakeup u:object_r:sysfs_wakeup:s0
