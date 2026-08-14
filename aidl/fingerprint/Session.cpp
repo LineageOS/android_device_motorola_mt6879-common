@@ -11,6 +11,7 @@
 #include "Session.h"
 
 #include "CancellationSignal.h"
+#include <filesystem>
 
 namespace aidl::android::hardware::biometrics::fingerprint {
 
@@ -35,6 +36,9 @@ Session::Session(fingerprint_device_t* device, rbs_fingerprint_device_t* rbsDevi
     mDeathRecipient = AIBinder_DeathRecipient_new(onClientDeath);
 
     auto path = std::format("/data/vendor_de/{}/fpdata", userId);
+    std::error_code ec;
+    std::filesystem::create_directories(std::format("{}/calibration/et713", path), ec);
+    std::filesystem::create_directories("/data/vendor/egis", ec);
     if (mAncDevice && mAncDevice->AncSetActiveGroup) {
         ALOGI("setActiveGroup (ANC)");
         int rc = mAncDevice->AncSetActiveGroup(mDevice, userId, path.c_str());
@@ -47,7 +51,7 @@ Session::Session(fingerprint_device_t* device, rbs_fingerprint_device_t* rbsDevi
         if (rc != 0) {
             ALOGE("rbs_active_user_group failed, error: %d", rc);
         }
-        rc = mRbsDevice->rbs_set_data_path(1, path.c_str());
+        rc = mRbsDevice->rbs_set_data_path(1, path.c_str(), path.length());
         if (rc != 0) {
             ALOGE("rbs_set_data_path failed, error: %d", rc);
         }
@@ -68,10 +72,6 @@ ndk::ScopedAStatus Session::generateChallenge() {
     }
     if (mRbsDevice) {
         mChallenge = static_cast<uint64_t>(rand()) | (static_cast<uint64_t>(rand()) << 32);
-        int rc = mRbsDevice->rbs_pre_enroll(mUserId, 10);
-        if (rc != 0) {
-            ALOGE("rbs_pre_enroll failed in generateChallenge: %d", rc);
-        }
         mCb->onChallengeGenerated(mChallenge);
         return ndk::ScopedAStatus::ok();
     }
@@ -93,10 +93,6 @@ ndk::ScopedAStatus Session::revokeChallenge(int64_t challenge) {
     }
     if (mRbsDevice) {
         mChallenge = 0;
-        int rc = mRbsDevice->rbs_post_enroll();
-        if (rc != 0) {
-            ALOGE("rbs_post_enroll failed in revokeChallenge: %d", rc);
-        }
         mCb->onChallengeRevoked(challenge);
         return ndk::ScopedAStatus::ok();
     }
@@ -169,13 +165,16 @@ ndk::ScopedAStatus Session::enroll(const HardwareAuthToken& hat,
             }
         }
 
-        rc = mRbsDevice->rbs_pre_enroll(mUserId, 10);
+        uint32_t fid = static_cast<uint32_t>(rand());
+        rc = mRbsDevice->rbs_pre_enroll(mUserId, fid);
         if (rc != 0) {
             ALOGE("rbs_pre_enroll failed: %d", rc);
         }
-        mRbsDevice->rbs_cancel(nullptr, 2);
         if (mRbsDevice->rbs_extra_api) {
-            mRbsDevice->rbs_extra_api(3, nullptr, 0, nullptr, nullptr);
+            uint32_t timeout = 60;
+            uint8_t out_buf[32] = {0};
+            uint32_t out_len = sizeof(out_buf);
+            mRbsDevice->rbs_extra_api(8, reinterpret_cast<const uint8_t*>(&timeout), sizeof(timeout), out_buf, &out_len);
         }
 
         rc = mRbsDevice->rbs_enroll();
@@ -214,9 +213,6 @@ ndk::ScopedAStatus Session::authenticate(int64_t operationId,
 
     if (mRbsDevice) {
         checkSensorLockout();
-        mRbsDevice->rbs_cancel(nullptr, 2);
-        mRbsDevice->rbs_cancel(nullptr, 3);
-        mRbsDevice->rbs_cancel(nullptr, 5);
         int rc = mRbsDevice->rbs_authenticator(mUserId, nullptr, 0, operationId);
         if (rc != 0) {
             ALOGE("rbs_authenticator failed, error %d", rc);
@@ -258,7 +254,7 @@ ndk::ScopedAStatus Session::enumerateEnrollments() {
     }
 
     if (mRbsDevice) {
-        uint32_t num_fids = 0;
+        uint32_t num_fids = 5;
         uint32_t fids[5] = {};
         int rc = mRbsDevice->rbs_get_fingerprint_ids(mUserId, fids, &num_fids);
         if (rc != 0) {
@@ -299,7 +295,7 @@ ndk::ScopedAStatus Session::removeEnrollments(const std::vector<int32_t>& enroll
 
     if (mRbsDevice) {
         if (enrollmentIds.empty()) {
-            uint32_t num_fids = 0;
+            uint32_t num_fids = 5;
             uint32_t fids[5] = {};
             int rc = mRbsDevice->rbs_get_fingerprint_ids(mUserId, fids, &num_fids);
             if (rc == 0 && num_fids > 0) {
@@ -431,18 +427,12 @@ ndk::ScopedAStatus Session::onPointerDown(int32_t /*pointerId*/, int32_t x, int3
     if (mUdfpsHandler) {
         mUdfpsHandler->onFingerDown(x, y, minor, major);
     }
-    if (mRbsDevice && mRbsDevice->rbs_extra_api) {
-        mRbsDevice->rbs_extra_api(1, nullptr, 0, nullptr, nullptr);
-    }
     return ndk::ScopedAStatus::ok();
 }
 
 ndk::ScopedAStatus Session::onPointerUp(int32_t /*pointerId*/) {
     if (mUdfpsHandler) {
         mUdfpsHandler->onFingerUp();
-    }
-    if (mRbsDevice && mRbsDevice->rbs_extra_api) {
-        mRbsDevice->rbs_extra_api(2, nullptr, 0, nullptr, nullptr);
     }
 
     return ndk::ScopedAStatus::ok();
@@ -507,9 +497,7 @@ ndk::ScopedAStatus Session::cancel() {
     }
 
     if (mRbsDevice) {
-        mRbsDevice->rbs_cancel(nullptr, 2);
-        mRbsDevice->rbs_cancel(nullptr, 3);
-        mRbsDevice->rbs_cancel(nullptr, 5);
+        mRbsDevice->rbs_cancel();
         mCb->onError(Error::CANCELED, 0);
         return ndk::ScopedAStatus::ok();
     }
@@ -529,9 +517,25 @@ ndk::ScopedAStatus Session::cancel() {
 
 ndk::ScopedAStatus Session::close() {
     mClosed = true;
+    if (mUdfpsHandler) {
+        mUdfpsHandler->cancel();
+    }
     mCb->onSessionClosed();
-    AIBinder_DeathRecipient_delete(mDeathRecipient);
+    if (mDeathRecipient) {
+        AIBinder_DeathRecipient_delete(mDeathRecipient);
+        mDeathRecipient = nullptr;
+    }
     return ndk::ScopedAStatus::ok();
+}
+
+Session::~Session() {
+    if (mUdfpsHandler) {
+        mUdfpsHandler->cancel();
+    }
+    if (mDeathRecipient) {
+        AIBinder_DeathRecipient_delete(mDeathRecipient);
+        mDeathRecipient = nullptr;
+    }
 }
 
 binder_status_t Session::linkToDeath(AIBinder* binder) {
@@ -664,6 +668,9 @@ void Session::notify(const fingerprint_msg_t* msg) {
     // const uint64_t devId = reinterpret_cast<uint64_t>(mDevice);
     switch (msg->type) {
         case FINGERPRINT_ERROR: {
+            if (mUdfpsHandler) {
+                mUdfpsHandler->cancel();
+            }
             int32_t vendorCode = 0;
             Error result = VendorErrorFilter(msg->data.error, &vendorCode);
             ALOGD("onError(%hhd, %d)", result, vendorCode);

@@ -31,6 +31,7 @@ class Session : public BnSession {
     Session(fingerprint_device_t* device, rbs_fingerprint_device_t* rbsDevice,
             anc_fingerprint_device_t* ancDevice, UdfpsHandler* udfpsHandler, int userId,
             std::shared_ptr<ISessionCallback> cb, LockoutTracker lockoutTracker);
+    virtual ~Session();
     int32_t getUserId() const { return mUserId; }
     ndk::ScopedAStatus generateChallenge() override;
     ndk::ScopedAStatus revokeChallenge(int64_t challenge) override;

@@ -15,6 +15,8 @@
 #include <unistd.h>
 #include "util/Util.h"
 
+#include <filesystem>
+
 namespace aidl::android::hardware::biometrics::fingerprint {
 
 namespace {
@@ -217,6 +219,13 @@ rbs_fingerprint_device_t* Fingerprint::openRbsFingerprintHal() {
         rbsDevice->rbs_get_authenticator_id && rbsDevice->rbs_set_on_callback_proc) {
 
         rbsDevice->rbs_set_on_callback_proc(reinterpret_cast<void*>(Fingerprint::rbsNotify));
+        static const char kDefaultPath[] = "/data/vendor_de/0/fpdata";
+        std::error_code ec;
+        std::filesystem::create_directories("/data/vendor_de/0/fpdata/calibration/et713", ec);
+        std::filesystem::create_directories("/data/vendor/egis", ec);
+        if (rbsDevice->rbs_set_data_path) {
+            rbsDevice->rbs_set_data_path(1, kDefaultPath, sizeof(kDefaultPath) - 1);
+        }
         int err = rbsDevice->rbs_initialize(0, 0);
         if (err == 0) {
             ALOGI("Initialized Egistec RBS fingerprint sensor successfully");
@@ -244,8 +253,8 @@ void Fingerprint::handleRbsNotify(uint32_t eventId, uint32_t value1, uint32_t va
     memset(&msg, 0, sizeof(msg));
 
     switch (eventId) {
+        case 0x3e9:
         case 0x3eb:
-        case 0x401:
             msg.type = FINGERPRINT_ERROR;
             msg.data.error = FINGERPRINT_ERROR_CANCELED;
             break;
@@ -260,6 +269,8 @@ void Fingerprint::handleRbsNotify(uint32_t eventId, uint32_t value1, uint32_t va
             break;
         case 0x3ee:
         case 0x3ef:
+        case 0x3f0:
+        case 0x3fd:
             msg.type = FINGERPRINT_ACQUIRED;
             msg.data.acquired.acquired_info = FINGERPRINT_ACQUIRED_VENDOR_BASE;
             break;
@@ -278,10 +289,6 @@ void Fingerprint::handleRbsNotify(uint32_t eventId, uint32_t value1, uint32_t va
             msg.type = FINGERPRINT_ACQUIRED;
             msg.data.acquired.acquired_info = FINGERPRINT_ACQUIRED_TOO_FAST;
             break;
-        case 0x3fe:
-            msg.type = FINGERPRINT_ACQUIRED;
-            msg.data.acquired.acquired_info = FINGERPRINT_ACQUIRED_GOOD;
-            break;
         case 0x40d:
             msg.type = FINGERPRINT_TEMPLATE_ENROLLING;
             msg.data.enroll.finger.fid = value1;
@@ -290,6 +297,7 @@ void Fingerprint::handleRbsNotify(uint32_t eventId, uint32_t value1, uint32_t va
             break;
         case 0x3f2:
         case 0x3f3:
+        case 0x424:
             msg.type = FINGERPRINT_AUTHENTICATED;
             msg.data.authenticated.finger.gid = value1;
             msg.data.authenticated.finger.fid = value2;
@@ -297,6 +305,14 @@ void Fingerprint::handleRbsNotify(uint32_t eventId, uint32_t value1, uint32_t va
                 memcpy(&msg.data.authenticated.hat, buffer, sizeof(hw_auth_token_t));
             }
             break;
+        case 0x3ea:
+        case 0x3fc:
+        case 0x3fe:
+        case 0x3ff:
+        case 0x401:
+        case 0x41b:
+            // Internal driver status events, ignore
+            return;
         default:
             ALOGW("handleRbsNotify: unknown eventId %u", eventId);
             return;
