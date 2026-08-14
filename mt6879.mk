@@ -188,11 +188,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
     android.hardware.health-service.example_recovery
 
-# Keylayout
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/keylayout/goodix_ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/goodix_ts.kl \
-    $(COMMON_PATH)/configs/keylayout/fts_ts.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/fts_ts.kl
-
 # Keymint
 PRODUCT_PACKAGES += \
     libkeymint.vendor \

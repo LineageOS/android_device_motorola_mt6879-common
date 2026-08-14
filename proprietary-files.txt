@@ -11,10 +11,6 @@ vendor/lib64/libMtkSpeechEnh.so
 vendor/lib64/libMtkSpeechEnh_swb.so
 vendor/lib64/lib_iir.so
 vendor/lib64/libalsautils.so:vendor/lib64/libalsautils-v31.so;FIX_SONAME
-vendor/lib64/libaualgo_azp_component.so
-vendor/lib64/libaualgo_azp_wrapper.so
-vendor/lib64/libaualgo_foundation.so
-vendor/lib64/libaualgo_sst_component.so
 vendor/lib64/libaudiocompensationfilter_vendor.so
 vendor/lib64/libaudiocompensationfilterc.so
 vendor/lib64/libaudiocomponentengine_vendor.so
