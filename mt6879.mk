@@ -204,6 +204,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.lights-service.mt6879
 
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay-service.mt6879
+
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 

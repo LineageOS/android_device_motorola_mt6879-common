@@ -1,0 +1,8 @@
+on boot
+    chown system system /sys/devices/platform/14017000.dsi/dc
+    chown system system /sys/devices/platform/14017000.dsi/hbm
+
+service vendor.livedisplay-hal-mt6879 /vendor/bin/hw/vendor.lineage.livedisplay-service.mt6879
+    class hal
+    user system
+    group system

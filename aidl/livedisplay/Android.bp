@@ -1,0 +1,24 @@
+//
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "vendor.lineage.livedisplay-service.mt6879",
+    init_rc: ["vendor.lineage.livedisplay-service.mt6879.rc"],
+    vintf_fragments: ["vendor.lineage.livedisplay-service.mt6879.xml"],
+    relative_install_path: "hw",
+    vendor: true,
+    srcs: [
+        "AntiFlicker.cpp",
+        "SunlightEnhancement.cpp",
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "libbinder",
+        "libutils",
+        "vendor.lineage.livedisplay-V1-ndk",
+    ],
+}

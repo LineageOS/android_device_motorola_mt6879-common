@@ -19,6 +19,9 @@
 # Lights
 /vendor/bin/hw/android\.hardware\.lights-service\.mt6879                              u:object_r:hal_light_default_exec:s0
 
+# LiveDisplay
+/vendor/bin/hw/vendor\.lineage\.livedisplay-service\.mt6879                         u:object_r:hal_lineage_livedisplay_default_exec:s0
+
 # Mobicore TEE
 /mnt/vendor/trustlet(/.*)? u:object_r:mnt_vendor_trustlet_file:s0
 /mnt/vendor/tzapp(/.*)? u:object_r:mnt_vendor_trustlet_file:s0
