@@ -212,9 +212,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Media
-PRODUCT_PACKAGES += \
-    android.hardware.media.c2-mtk-service
-
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(COMMON_PATH)/configs/media,$(TARGET_COPY_OUT_VENDOR)/etc)
 
