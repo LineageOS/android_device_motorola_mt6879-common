@@ -1,0 +1,18 @@
+[
+  {
+    "repository": "android_kernel_motorola_mt6879",
+    "target_path": "kernel/motorola/mt6879"
+  },
+  {
+    "repository": "android_device_mediatek_sepolicy_vndr",
+    "target_path": "device/mediatek/sepolicy_vndr"
+  },
+  {
+    "repository": "android_hardware_motorola",
+    "target_path": "hardware/motorola"
+  },
+  {
+    "repository": "android_hardware_mediatek",
+    "target_path": "hardware/mediatek"
+  }
+]
