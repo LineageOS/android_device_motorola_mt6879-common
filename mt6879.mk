@@ -223,6 +223,8 @@ PRODUCT_COPY_FILES += \
     hardware/google/pixel/mm/fstab.zram.40p:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.zram
 
 # Overlays
+$(call inherit-product, hardware/mediatek/overlay/mssi.mk)
+
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 PRODUCT_PACKAGES += \
@@ -230,16 +232,16 @@ PRODUCT_PACKAGES += \
     SettingsOverlayMT6879 \
     SystemUIOverlayMT6879 \
     Launcher3DeviceOverlay \
-    NfcOverlayMT6879 \
-    TetheringOverlayMT6879 \
-    WifiOverlayMT6879 \
-    TelephonyOverlayMT6879
+    NfcOverlayMT6879
 
 PRODUCT_PACKAGES += \
     NcmTetheringOverlay
 
 PRODUCT_PACKAGES += \
     LineageApertureOverlayMT6879
+
+# Platform
+TARGET_BOARD_PLATFORM := mt6879
 
 # Power-off Alarm
 PRODUCT_PACKAGES += \
@@ -258,6 +260,9 @@ PRODUCT_COPY_FILES += \
 
 # Properties
 include hardware/mediatek/configs/properties/vendor_logtag.mk
+
+# RIL
+ENABLE_VENDOR_RIL_SERVICE := true
 
 # Radio
 $(call inherit-product, hardware/mediatek/frameworks/mediatek-frameworks.mk)
