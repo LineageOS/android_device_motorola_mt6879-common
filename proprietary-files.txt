@@ -35,10 +35,13 @@ vendor/lib64/librt_extamp_intf.so
 vendor/lib64/libspeech_enh_lib.so;FIX_SONAME
 vendor/lib64/libspeechparser_vendor.so
 vendor/lib64/libudf.so
+vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so
+vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.2.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib64/vendor.mediatek.hardware.audio@7.1.so
 
 # Bluetooth (Driver)
+vendor/etc/init/init.bt_drv.rc
 vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
 vendor/lib64/libbluetooth_audio_session_mediatek.so
 vendor/lib64/libbluetooth_hw_test.so
@@ -47,9 +50,6 @@ vendor/lib64/libbluetooth_mtk_pure.so
 vendor/lib64/libbluetooth_relayer.so
 vendor/lib64/libbluetoothem_mtk.so
 vendor/lib64/libbt-vendor.so
-
-# Bluetooth (Firmware)
-vendor/etc/init/init.bt_drv.rc
 
 # Connectivity
 vendor/bin/conninfra_loader
