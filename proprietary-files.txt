@@ -42,7 +42,6 @@ vendor/lib64/vendor.mediatek.hardware.audio@7.1.so
 vendor/etc/init/init.bt_drv.rc
 vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
 vendor/lib64/libbluetooth_audio_session_mediatek.so
-vendor/lib64/libbluetooth_hw_test.so
 vendor/lib64/libbluetooth_mtk.so
 vendor/lib64/libbluetooth_mtk_pure.so
 vendor/lib64/libbluetooth_relayer.so
@@ -109,7 +108,6 @@ vendor/lib64/liboemcrypto.so
 vendor/lib64/libtlcWidevineModularDrm.so
 vendor/lib64/liburee_meta_drmkeyinstall.so
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # Euicc
@@ -119,7 +117,6 @@ product/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED
 
 # Gatekeeper
 vendor/lib64/hw/libMcGatekeeper.so;SYMLINK=vendor/lib64/hw/gatekeeper.trustonic.so
-vendor/lib64/hw/libSoftGatekeeper.so;SYMLINK=vendor/lib64/hw/gatekeeper.default.so
 
 # GNSS
 vendor/bin/hw/android.hardware.gnss-service.mediatek
@@ -171,8 +168,6 @@ vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_SoftBank.xml
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Sprint.xml
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_T-Mobile_US.xml
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_TELUS_Mobility.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Test_SIM1.xml
-vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Test_SIM2.xml
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_USC.xml
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Verizon_Wireless.xml
 vendor/etc/gnss/carrier/agps_profiles_conf2_carrier_Virgin_Mobile.xml
@@ -222,8 +217,6 @@ vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.1.so
 
 # Media
 vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b
-vendor/etc/AbnormalDisplayLog_dynamic.xml
-vendor/etc/VideoLog_dynamic.xml
 vendor/etc/init/android.hardware.media.c2@1.2-mediatek-64b.rc
 vendor/etc/mtk_platform_codecs_config.xml
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
@@ -576,5 +569,4 @@ vendor/bin/wmt_launcher
 vendor/bin/wmt_loader
 vendor/etc/init/init.wlan_drv.rc
 vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal-mtk.so;FIX_SONAME
-vendor/lib64/libwifitest.so
 vendor/lib64/meta_wifi_data.so
