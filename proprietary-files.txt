@@ -33,10 +33,10 @@ vendor/lib64/libmtktinyxml.so
 vendor/lib64/librt_extamp_intf.so
 vendor/lib64/libspeech_enh_lib.so;FIX_SONAME
 vendor/lib64/libspeechparser_vendor.so
-vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so
-vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.2.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib64/vendor.mediatek.hardware.audio@7.1.so
+vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so
+vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.2.so
 
 # Bluetooth (Driver)
 vendor/etc/init/init.bt_drv.rc
@@ -290,13 +290,13 @@ vendor/bin/init.insmod.sh
 vendor/etc/init.insmod.mt6879.cfg
 
 # Motorola (scripts)
-vendor/bin/motobox;SYMLINK=vendor/bin/expat
 vendor/bin/hardware_revisions.sh
 vendor/bin/init.mmi.backup.trustlet.sh
 vendor/bin/init.mmi.block_perm.sh
 vendor/bin/init.mmi.boot.sh
 vendor/bin/init.mmi.shutdown.sh
 vendor/bin/init.mmi.touch.sh
+vendor/bin/motobox;SYMLINK=vendor/bin/expat
 vendor/bin/vendor.mmi.cxp.sh
 vendor/etc/init/hw/init.mmi.backup.trustlet.rc
 vendor/etc/init/vendor.mmi.carrier.rc
@@ -337,9 +337,9 @@ system_ext/lib64/vendor.mediatek.hardware.apuware.apusys@2.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.apusys@2.1.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.hmp@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.utils-V1-ndk.so
-system_ext/lib64/vendor.mediatek.hardware.apuware.xrp-V1-ndk.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.utils@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.utils@2.0.so
+system_ext/lib64/vendor.mediatek.hardware.apuware.xrp-V1-ndk.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.xrp@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.xrp@2.0.so
 
@@ -493,10 +493,10 @@ vendor/lib64/vendor.mediatek.hardware.nwk_opt@1.0.so
 vendor/lib64/vendor.mediatek.hardware.radio_op@3.0.so
 
 # Radio (MTK-IMS)
-system_ext/bin/vtservice
-system_ext/etc/init/init.vtservice.rc
 system/etc/permissions/moto-telephony.xml
 system/framework/moto-telephony.jar
+system_ext/bin/vtservice
+system_ext/etc/init/init.vtservice.rc
 system_ext/framework/mediatek-ims-base.jar
 system_ext/framework/mediatek-ims-oem-plugin.jar
 system_ext/lib64/libcomutils.so
@@ -520,11 +520,12 @@ system_ext/priv-app/MtkTelephonyAssist/MtkTelephonyAssist.apk
 
 # Radio (IMS)
 vendor/bin/hw/vtservice_hidl
-vendor/etc/init/init.vtservice_hidl.rc
 vendor/bin/lbs_hidl_service
 vendor/bin/volte_clientapi_ua
+vendor/etc/init/init.vtservice_hidl.rc
 vendor/etc/init/lbs_hidl_service.rc
 vendor/etc/init/volte_clientapi_ua.rc
+vendor/lib64/hw/vendor.mediatek.hardware.videotelephony@1.0-impl.so
 vendor/lib64/lbs_hidl_service-impl.so
 vendor/lib64/libmmagent.so
 vendor/lib64/libmtkshifter_vendor.so
@@ -533,7 +534,6 @@ vendor/lib64/vendor.mediatek.hardware.clientapi@1.0.so
 vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
-vendor/lib64/hw/vendor.mediatek.hardware.videotelephony@1.0-impl.so
 vendor/lib64/vendor.mediatek.hardware.videotelephony@1.0.so;MODULE_SUFFIX=_vendor
 
 # Sensors
